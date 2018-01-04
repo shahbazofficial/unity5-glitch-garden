@@ -30,7 +30,7 @@ public class SplashFade : MonoBehaviour
 		if (fadeMode == FadeMode.FadeOutOnly || fadeMode == FadeMode.FadeInAndOut)
 			FadeOut();
 		yield return new WaitForSeconds(fadeOutTime);
-		LevelManager.LoadLevel(loadLevel);
+		LevelManager.LoadLevelStatic(loadLevel);
 	}
 	void Initialize()
 	{

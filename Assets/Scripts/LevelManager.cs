@@ -5,15 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-	public static void LoadLevel (string name)
+	public static void LoadLevelStatic (string name)
 	{
 		SceneManager.LoadScene(name);
 	}
-	public static void LoadNextLevel()
+	public void LoadLevel (string name)
+	{
+		LoadLevelStatic(name);
+	}
+	public void LoadNextLevel()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
-	public static void QuitGame ()
+	public void QuitGame ()
 	{
 		Application.Quit();
 	}
