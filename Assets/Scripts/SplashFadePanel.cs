@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class SplashFade : MonoBehaviour
+
+public class SplashFadePanel : MonoBehaviour
 {
 	public enum FadeMode { NoFade, FadeInOnly, FadeOutOnly, FadeInAndOut };
-
-	public Image backgroundImage;
-	public Text titleText;
 	public FadeMode fadeMode;
 
 	[SerializeField]
@@ -19,7 +17,7 @@ public class SplashFade : MonoBehaviour
 	[SerializeField]
 	private string loadLevel;
 
-	IEnumerator Start()
+	private IEnumerator Start()
 	{
 		if (fadeMode == FadeMode.FadeInOnly || fadeMode == FadeMode.FadeInAndOut)
 		{
@@ -34,17 +32,14 @@ public class SplashFade : MonoBehaviour
 	}
 	void Initialize()
 	{
-		backgroundImage.canvasRenderer.SetAlpha(0.0f);
-		titleText.canvasRenderer.SetAlpha(0.0f);
+		GetComponent<Image>().canvasRenderer.SetAlpha(1.0f);
 	}
 	void FadeIn()
 	{
-		backgroundImage.CrossFadeAlpha(1.0f, fadeInTime, false);
-		titleText.CrossFadeAlpha(1.0f, fadeInTime, false);
+		GetComponent<Image>().CrossFadeAlpha(0.0f, fadeInTime, false);
 	}
 	void FadeOut()
 	{
-		backgroundImage.CrossFadeAlpha(0.0f, fadeOutTime, false);
-		titleText.CrossFadeAlpha(0.0f, fadeOutTime, false);
+		GetComponent<Image>().CrossFadeAlpha(1.0f, fadeInTime, false);
 	}
 }
